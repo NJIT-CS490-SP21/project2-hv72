@@ -11,7 +11,7 @@ export function Board(props)
     const [isx, changex] = useState([0]);
     const playerX = props.user_list[0];
     const playerO = props.user_list[1];
-    
+
     function onClickDiv(index){
         const newList = [...myList];
         var countNonNull = 0;
@@ -85,7 +85,15 @@ export function Board(props)
         for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
             if (myList[a] && myList[a] === myList[b] && myList[a] === myList[c]) {
-              return myList[a] + " has won the game";
+                if(myList[a] == "X" && props.name == playerX)
+                {
+                    socket.emit("on_win", [playerX, playerO]);
+                }
+                else if(myList[a] == "O" && props.name == playerO)
+                {
+                    socket.emit("on_win", [playerO, playerX]);
+                }
+                return myList[a] + " has won the game";
             }
         }
         return null;

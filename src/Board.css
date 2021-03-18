@@ -10,6 +10,10 @@
   border: 1px solid black; /* Shows the lines in the CSS grid */
 }
 
+.currentUser{
+	color : white;
+	background-color : blue;
+}
 /*.overarching{*/
 /*	text-align:center;*/
 /*}*/
